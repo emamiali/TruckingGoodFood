@@ -10,10 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425145643) do
+ActiveRecord::Schema.define(version: 20170425160443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "menus", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "truck_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["truck_id"], name: "index_menus_on_truck_id", using: :btree
+    t.index ["user_id"], name: "index_menus_on_user_id", using: :btree
+  end
+
+  create_table "trucks", force: :cascade do |t|
+    t.string   "truck_name"
+    t.string   "phone_number"
+    t.string   "address"
+    t.float    "long"
+    t.float    "lat"
+    t.boolean  "is_cash_only"
+    t.string   "picture"
+    t.string   "info"
+    t.string   "category"
+    t.string   "general_hours"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -23,4 +47,6 @@ ActiveRecord::Schema.define(version: 20170425145643) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "menus", "trucks"
+  add_foreign_key "menus", "users"
 end
