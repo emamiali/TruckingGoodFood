@@ -10,10 +10,12 @@
 
   <body>
     <% flash.each do |name, msg| %>
-  <p>
-    <small> <%= name.capitalize %>: <%= msg %> </small>
-  </p>
-<% end %>
+    <div class="alert <%= name == 'error' ? 'alert-danger' : 'alert-info' %>">
+      <div class="container">
+        <%= msg %>
+      </div>
+    </div>
+    <% end %>
     <ul>
       <% if current_user %>
       <li><%= link_to "Profile", user_path(current_user) %></li>
