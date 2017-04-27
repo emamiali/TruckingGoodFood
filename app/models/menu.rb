@@ -1,4 +1,4 @@
 class Menu < ApplicationRecord
-  belongs_to :user
-  belongs_to :truck
+  has_many :trucks
+  has_many :users
 end
