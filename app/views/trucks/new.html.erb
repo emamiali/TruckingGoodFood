@@ -1,30 +1,45 @@
-<%= form_for @truck do |f| %>
-  <div>
-    <%= f.text_field :truck_name, placeholder: "Truck Name" %>
+<%= form_for @truck, :html => {:class => "form-horizontal center"} do |f| %>
+    <div class="form-group">
+    <%= f.label :truck_name,"Truck Name", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+    <%= f.text_field :truck_name, placeholder: "Truck Name", class: "form-control" %>
   </div>
-  <div>
-    <%= f.text_field :phone_number, placeholder: "Phone Number" %>
+</div>
+<div class="form-group">
+    <%= f.label :phone_number,"Phone Number", class: "col-md-4 control-label" %>
+      <div class="col-md-8">
+    <%= f.text_field :phone_number, placeholder:"ex.510-123-4567", class: "form-control" %>
   </div>
-  <div>
-    <%= f.text_field :address, placeholder: "Address" %>
+</div>
+<div class="form-group">
+  <%= f.label :address,"Address", class: "col-md-4 control-label" %>
+  <div class="col-md-8">
+    <%= f.text_field :address, placeholder: "321 Bush St.",  class: "form-control" %>
   </div>
-  <div>
-    Is Cash Only? <%= f.check_box :is_cash_only, {}, "true", "false" %>
+</div>
+
+  <div class="form-group">
+      <%= f.label :info ,"Food Truck Info", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+    <%= f.text_area :info, placeholder: "About Your Food Truck", class: "form-control" %>
   </div>
-  <div>
-    <%= f.number_field :long, placeholder: "Longitude" %>
+</div>
+<div class="form-group">
+  <%= f.label :category,"Category", class: "col-md-4 control-label" %>
+  <div class="col-md-8">
+    <%= f.text_field :category, placeholder: "Category", class: "form-control" %>
   </div>
-  <div>
-    <%= f.number_field :lat, placeholder: "Latitude" %>
   </div>
-  <div>
-    <%= f.text_area :info, placeholder: "Food Truck info" %>
+<div class="form-group">
+    <%= f.label :general_hours,"Hours", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :general_hours, placeholder: "Hours of Operation", class: "form-control" %>
+
   </div>
-  <div>
-    <%= f.text_field :category, placeholder: "category" %>
-  </div>
-  <div>
-    <%= f.text_field :general_hours, placeholder: "Hours of Operation" %>
-  </div>
-  <%= f.submit %>
+</div>
+<div class="form-group pull-right">
+Is Cash Only? <%= f.check_box :is_cash_only, {}, "true", "false"  %>
+<%= f.submit "submit", class: "btn btn-primary" %>
+</div>
+
 <% end %>
