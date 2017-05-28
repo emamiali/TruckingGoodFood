@@ -10,19 +10,26 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   post '/sessions', to: 'sessions#create'
 
-  get '/trucks', to: 'trucks#index', as: 'trucks'
-  get '/trucks/new', to: 'trucks#new', as: 'new_trucks'
-  post '/trucks', to: 'trucks#create'
-  get '/trucks/:id', to: 'trucks#show', as: 'truck'
-  get '/trucks/:id/edit', to: 'trucks#edit', as: 'edit_trucks'
-  patch '/trucks/:id', to: 'trucks#update'
-  delete '/trucks/:id', to: 'trcuks#delete'
 
-  get '/trucks/:id/menus', to: 'menus#index', as: 'menus'
-  get '/trucks/:id/menus/new', to: 'menus#new', as: 'new_menu'
-  post '/trucks/:id/menus', to: 'menus#create'
-  get '/trucks/:id/menus/:id', to: 'menus#show', as: 'menu'
-  get '/trucks/:id/menus/:id/edit', to: 'menus#edit', as: 'edit_menu'
-  patch '/trucks/:id/menus/:id', to: 'menus#update'
-  delete '/trucks/:id/menus/:id', to: 'menus#delete'
+  resources :trucks
+
+  resources :trucks do
+      resources :menues
+  end
+
+  # get '/trucks', to: 'trucks#index', as: 'trucks'
+  # get '/trucks/new', to: 'trucks#new', as: 'new_trucks'
+  # post '/trucks', to: 'trucks#create'
+  # get '/trucks/:id', to: 'trucks#show', as: 'truck'
+  # get '/trucks/:id/edit', to: 'trucks#edit', as: 'edit_trucks'
+  # patch '/trucks/:id', to: 'trucks#update'
+  # delete '/trucks/:id', to: 'trcuks#delete'
+
+  # get '/trucks/:id/menus', to: 'menus#index', as: 'menus'
+  # get '/trucks/:id/menus/new', to: 'menus#new', as: 'new_menu'
+  # post '/trucks/:id/menus', to: 'menus#create'
+  # get '/trucks/:id/menus/:id', to: 'menus#show', as: 'menu'
+  # get '/trucks/:id/menus/:id/edit', to: 'menus#edit', as: 'edit_menu'
+  # patch '/trucks/:id/menus/:id', to: 'menus#update'
+  # delete '/trucks/:id/menus/:id', to: 'menus#delete'
 end

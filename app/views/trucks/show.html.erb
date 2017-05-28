@@ -1,1 +1,31 @@
-<h1>This is the show page. Add the neccessay fields here</h1>
+<div class="one_truck_container container">
+   <div class="row">
+
+  <div class="col-sm-6">
+    <%= image_tag @truck.picture %>
+    <br>
+    <div class="truck_info">
+      Name:
+      <%= @truck.truck_name %>
+      <br>
+      Phone Number:
+      <%= @truck.phone_number %>
+      <br>
+      Address:
+      <%= @truck.address %>
+      <br>
+      Info:
+      <%= @truck.info %>
+      <br>
+      Category:
+      <%= @truck.category %>
+      <br>
+      Hours:
+      <%= @truck.general_hours %>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    This will be each truck info
+  </div>
+</div>
+</div>

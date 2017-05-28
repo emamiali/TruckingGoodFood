@@ -28,7 +28,7 @@ class TrucksController < ApplicationController
 
   def update
   @truck = Truck.find(params[:id])
-    if @truck.update(trucks_params)
+    if @truck.update(truck_params)
       flash[:notice] = "Successfully updated truck."
       redirect_to trucks_path
     else

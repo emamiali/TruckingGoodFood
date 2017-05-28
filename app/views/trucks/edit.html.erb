@@ -9,13 +9,10 @@
     <%= f.text_field :address, placeholder: "Address" %>
   </div>
   <div>
+    <%= f.text_field :picture, placeholder: "Image" %>
+  </div>
+  <div>
     Is Cash Only? <%= f.check_box :is_cash_only, {}, "true", "false" %>
-  </div>
-  <div>
-    <%= f.number_field :long, placeholder: "Longitude" %>
-  </div>
-  <div>
-    <%= f.number_field :lat, placeholder: "Latitude" %>
   </div>
   <div>
     <%= f.text_area :info, placeholder: "Food Truck info" %>
