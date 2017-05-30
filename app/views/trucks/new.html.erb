@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= form_for @truck do |f| %>
   <div>
     <%= f.text_field :truck_name, placeholder: "Truck Name" %>
@@ -21,4 +22,50 @@
     <%= f.text_field :general_hours, placeholder: "Hours of Operation" %>
   </div>
   <%= f.submit %>
+=======
+<%= form_for @truck, :html => {:class => "form-horizontal center"} do |f| %>
+    <div class="form-group">
+    <%= f.label :truck_name,"Truck Name", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+    <%= f.text_field :truck_name, placeholder: "Truck Name", class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+    <%= f.label :phone_number,"Phone Number", class: "col-md-4 control-label" %>
+      <div class="col-md-8">
+    <%= f.text_field :phone_number, placeholder:"ex.510-123-4567", class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :address,"Address", class: "col-md-4 control-label" %>
+  <div class="col-md-8">
+    <%= f.text_field :address, placeholder: "321 Bush St.",  class: "form-control" %>
+  </div>
+</div>
+
+  <div class="form-group">
+      <%= f.label :info ,"Food Truck Info", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+    <%= f.text_area :info, placeholder: "About Your Food Truck", class: "form-control" %>
+  </div>
+</div>
+<div class="form-group">
+  <%= f.label :category,"Category", class: "col-md-4 control-label" %>
+  <div class="col-md-8">
+    <%= f.text_field :category, placeholder: "Category", class: "form-control" %>
+  </div>
+  </div>
+<div class="form-group">
+    <%= f.label :general_hours,"Hours", class: "col-md-4 control-label" %>
+    <div class="col-md-8">
+      <%= f.text_field :general_hours, placeholder: "Hours of Operation", class: "form-control" %>
+
+  </div>
+</div>
+<div class="form-group pull-right">
+Is Cash Only? <%= f.check_box :is_cash_only, {}, "true", "false"  %>
+<%= f.submit "submit", class: "btn btn-primary" %>
+</div>
+
+>>>>>>> f4b3066d0d07ffc9898e965562f684be6ae9f13c
 <% end %>

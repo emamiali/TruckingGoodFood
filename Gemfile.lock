@@ -43,9 +43,18 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+<<<<<<< HEAD
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+=======
+    bootstrap-generators (3.3.4)
+      railties (>= 3.1.0)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
+    bootstrap_form (2.7.0)
+>>>>>>> f4b3066d0d07ffc9898e965562f684be6ae9f13c
     builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -161,7 +170,13 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+<<<<<<< HEAD
   bootstrap-sass
+=======
+  bootstrap-generators (~> 3.3.4)
+  bootstrap-sass (~> 3.3.6)
+  bootstrap_form
+>>>>>>> f4b3066d0d07ffc9898e965562f684be6ae9f13c
   byebug
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
