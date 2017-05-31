@@ -11,8 +11,9 @@ class TrucksController < ApplicationController
   end
 
   def create
-    @truck = Truck.create(truck_params)
-    redirect_to trucks_path
+    @truck = @user.trcuks.create(truck_params)
+    redirect_to 
+
   end
 
   def show
