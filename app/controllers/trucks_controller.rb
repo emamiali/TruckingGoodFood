@@ -3,27 +3,22 @@ class TrucksController < ApplicationController
   before_action :find_user
 
   def index
-    @trucks = @user.trucks
+    @trucks = Truck.all
   end
 
   def new
-    @truck = @user.trucks.new
+    @truck = Truck.new
   end
 
   def create
-    @truck = @user.trcuks.create(truck_params)
-    redirect_to 
-
+    @truck = @user.trucks.create(truck_params)
+    redirect_to user_truck_path(user_id: @truck.user_id, id: @truck.id)
   end
 
   def show
-    @truck = Truck.find_by_id(params[:id])
+    @truck = @user.trucks.find_by_id(params[:id])
   end
 
-  def create
-    Truck.create(truck_params)
-    redirect_to trucks_path
-  end
 
   def edit
     @truck = Truck.find_by_id(params[:id])

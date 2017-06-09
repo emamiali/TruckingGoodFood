@@ -1,6 +1,29 @@
-<% @trucks.each do |truck| %>
-  <div>
-    <h3><%= truck.truck_name %></h3>
+<div class="welcome-top">
+  <h1>Welcome
+  </h1>
+  <h3>Trucking Good Food</h3>
+
+  <p>
+    This website helps you find food trucks near you. Please download our iOS app to use on an iphone. If you are a food truck owner and wish to add your truck please create an account and add your truck to the our website.
+  </p>
+  <p>
+    Below is a list of all out food trucks
+  </p>
+
+</div>
+
+<div class='container'>
+  <div class='row'>
+    <% @trucks.each do |truck| %>
+    <div class='col-sm-3'>
+      <%= truck.truck_name %>
+    </div>
+    <div class='col-sm-6'>
+      <%= truck.address %>
+    </div>
+    <div class='col-sm-3'>
+      <%= link_to 'More Info', truck_path(truck.id)%>
+    </div>
+      <% end %>
   </div>
-  <br>
-<% end %>
+</div>
