@@ -11,12 +11,24 @@ class TrucksController < ApplicationController
   end
 
   def create
-    @truck = @user.trucks.create(truck_params)
-    redirect_to user_truck_path(user_id: @truck.user_id, id: @truck.id)
+    @truck = Truck.create(truck_params)
+    if current_user == nil
+      flash[:error] = @truck.errors.full_messages.join(", ")
+      redirect_to new_user_session_path
+      return
+    else @truck.user_id = current_user.id
+    end
+    if @truck.save
+      flash[:notice] = "Successfully created truck"
+      redirect_to truck_path(@truck)
+    else
+      flash[:error] = @truck.errors.full_messages.join(", ")
+      redirect_to new_truck_path
+    end
   end
 
   def show
-    @truck = @user.trucks.find_by_id(params[:id])
+    @truck = Truck.find_by_id(params[:id])
   end
 
 
@@ -25,7 +37,7 @@ class TrucksController < ApplicationController
   end
 
   def update
-  @truck = Truck.find(params[:id])
+    @truck = Truck.find(params[:id])
     if @truck.update(truck_params)
       flash[:notice] = "Successfully updated truck."
       redirect_to trucks_path
@@ -40,7 +52,7 @@ class TrucksController < ApplicationController
     @truck.destroy
     flash[:notice] = "Successfully deleted recipe."
     redirect_to trucks_path
-end
+  end
 
   private
 

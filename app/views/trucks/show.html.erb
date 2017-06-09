@@ -28,5 +28,6 @@
     This will be each truck info
   </div>
 </div>
+<%= link_to 'Menu', truck_menu_path(@truck) %>
+<%= link_to 'edit this truck', edit_truck_path(@truck) %>
 </div>
-<%= link_to 'See all the menus for this truck', user_truck_menus_path(user_id: @truck.user_id, truck_id: @truck.id)%>
