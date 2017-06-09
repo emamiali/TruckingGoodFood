@@ -2,3 +2,12 @@
   Welcome <%= @user.business_name %>
 </div>
 <%= link_to 'Add a new Truck', new_truck_path %>
+<% @trucks.each do |truck| %>
+<div>
+<%= truck.truck_name %>
+<%= truck.address %>
+<%= link_to "", edit_truck_path(truck.id), {:class => "glyphicon glyphicon-pencil"} %>
+<%= link_to "", truck, method: :delete, :class => "glyphicon glyphicon-trash", data: { confirm: "Are you sure you want to delete this truck?"} %>
+<br>
+</div>
+<% end %>

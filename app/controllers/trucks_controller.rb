@@ -20,7 +20,7 @@ class TrucksController < ApplicationController
     end
     if @truck.save
       flash[:notice] = "Successfully created truck"
-      redirect_to truck_path(@truck)
+      redirect_to user_path(@truck.user_id)
     else
       flash[:error] = @truck.errors.full_messages.join(", ")
       redirect_to new_truck_path
@@ -40,7 +40,7 @@ class TrucksController < ApplicationController
     @truck = Truck.find(params[:id])
     if @truck.update(truck_params)
       flash[:notice] = "Successfully updated truck."
-      redirect_to trucks_path
+      redirect_to user_path(@truck.user_id)
     else
       flash[:error] = @truck.errors.full_messages.join(", ")
       redirect_to edit_trucks_path
@@ -50,8 +50,8 @@ class TrucksController < ApplicationController
   def destroy
     @truck = Truck.find(params[:id])
     @truck.destroy
-    flash[:notice] = "Successfully deleted recipe."
-    redirect_to trucks_path
+    flash[:notice] = "Successfully deleted truck."
+    redirect_to user_path(@truck.user_id)
   end
 
   private
