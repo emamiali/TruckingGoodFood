@@ -20,10 +20,26 @@ class UsersController < ApplicationController
     @trucks = @user.trucks
   end
 
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+    if @user.update(user_params)
+      flash[:notice] = "Successfully updated profile!!"
+      redirect_to user_path(params[:id])
+    else
+      flash[:error] = @user.errors.full_message.join(", ")
+      redirect_to edit_users_path
+      #check this redirect_to 
+    end
+  end
+
   private #making the params private
 
   def user_params
-    params.require(:user).permit(:business_name, :email, :password)
+    params.require(:user).permit(:business_name, :email, :password, :logo)
   end
 
 end #end of class

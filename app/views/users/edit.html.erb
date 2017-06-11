@@ -1,0 +1,21 @@
+<div class='col-sm-3'></div>
+<div class="col-sm-6">
+  <%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
+
+  <div class="col-sm-12 edit_business_name">
+    <%= f.text_field :business_name, placeholder: "Business Name", class: "form-control" %>
+  </div>
+  <div class="col-sm-12 edit_email">
+    <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
+  </div>
+  <div class="col-sm-12 edit_logo">
+    <%= f.text_field :logo, placeholder: "Logo", class: "form-control" %>
+  </div>
+
+
+  <div class="col-md-8">
+    <%= f.submit "Sign Up", class: "btn btn-default btn-primary" %>
+  </div>
+  <% end %>
+</div>
+<div class='col-sm-3'></div>

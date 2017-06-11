@@ -1,9 +1,16 @@
 <div>
+  <%= image_tag @user.logo %>
+  <br>
   Welcome <%= @user.business_name %>
+  <br>
+  Email: <%= @user.email %>
+  <br>
+  <br>
 </div>
 <%= link_to 'Add a new Truck', new_truck_path %>
 <% @trucks.each do |truck| %>
 <div>
+
 <%= truck.truck_name %>
 <%= truck.address %>
 <%= link_to "", edit_truck_path(truck.id), {:class => "glyphicon glyphicon-pencil"} %>
