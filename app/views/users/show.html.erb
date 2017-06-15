@@ -1,9 +1,14 @@
 <div>
-  <%= image_tag @user.logo %>
+  <%= image_tag @user.logo unless @user.logo.blank? %>
   <br>
   Welcome <%= @user.business_name %>
   <br>
   Email: <%= @user.email %>
+  <br>
+  Permit ID: <%= @user.permit_id %>
+  <br>
+  <br>
+  <%= link_to "Edit Your Profile", edit_user_path(@user) %>
   <br>
   <br>
 </div>

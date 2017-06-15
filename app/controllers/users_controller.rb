@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def new
-    #make a new user and pass to the form
     @user = User.new
   end
 
@@ -32,14 +31,14 @@ class UsersController < ApplicationController
     else
       flash[:error] = @user.errors.full_message.join(", ")
       redirect_to edit_users_path
-      #check this redirect_to 
+      #check this redirect_to
     end
   end
 
   private #making the params private
 
   def user_params
-    params.require(:user).permit(:business_name, :email, :password, :logo)
+    params.require(:user).permit(:business_name, :email, :password, :logo, :permit_id)
   end
 
 end #end of class
