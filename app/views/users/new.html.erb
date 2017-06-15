@@ -1,6 +1,6 @@
 Sign up
 
-<%= form_for @user, :html => {:class => "form-horizontal center"} do |f| %>
+<%= form_for @user, :html => { multipart: true, :class => "form-horizontal center"} do |f| %>
 
 <div class="col-md-8">
   <%= f.text_field :business_name, placeholder: "Business Name", class: "form-control" %>
@@ -12,6 +12,15 @@ Sign up
 
 <div class="col-md-8">
   <%= f.email_field :email, placeholder: "Email", class: "form-control" %>
+</div>
+
+<div class="col-sm-12">
+  <h4> Paste a link for your logo or upload a file</h4>
+  <%= f.text_field :logo, placeholder: "Logo", class: "form-control" %>
+</div>
+
+<div class="col-md-8">
+  <%= f.file_field :avatar %>
 </div>
 <div class="col-md-8">
   <%= f.password_field :password, placeholder: "Password", class: "form-control" %>

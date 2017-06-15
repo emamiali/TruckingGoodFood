@@ -1,5 +1,6 @@
 <div>
   <%= image_tag @user.logo unless @user.logo.blank? %>
+  <%= image_tag @user.avatar.url(:medium) %>
   <br>
   Welcome <%= @user.business_name %>
   <br>
