@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  validates :business_name, :permit_id, :password, :password_confirmation, presence: true
+  validates :permit_id, :email, uniqueness: true
+  validates :password, confirmation: true
+
   has_secure_password
   has_many :trucks
   has_many :menus, through: :trucks

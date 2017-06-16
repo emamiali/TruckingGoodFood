@@ -25,6 +25,11 @@ Sign up
 <div class="col-md-8">
   <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
 </div>
+
+<div class="col-md-8">
+  <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
+</div>
+
 <div class="col-md-8">
   <%= f.submit "Sign Up", class: "btn btn-default btn-primary" %>
 </div>

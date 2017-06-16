@@ -10,8 +10,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    login(@user)
-    redirect_to @user
+    if @user.save
+      flash[:notice] = "Successfully Signed-in"
+      login(@user)
+      redirect_to @user
+    else
+      flash[:error] = @user.errors.messages
+      redirect_to new_user_path
+    end
   end
 
   def show
@@ -38,7 +44,7 @@ class UsersController < ApplicationController
   private #making the params private
 
   def user_params
-    params.require(:user).permit(:business_name, :email, :password, :logo, :permit_id, :avatar)
+    params.require(:user).permit(:business_name, :email, :password, :logo, :permit_id, :avatar, :password_confirmation)
   end
 
 end #end of class
