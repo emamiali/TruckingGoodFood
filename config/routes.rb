@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     resources :menus
   end
 
+  resources :trucks do
+    resources :locations
+  end
+
 end
