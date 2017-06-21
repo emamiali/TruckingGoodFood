@@ -17,7 +17,7 @@
 <% @trucks.each do |truck| %>
 <div>
 
-<%= truck.truck_name %>
+<%= link_to truck.truck_name, truck_path(truck.id) %>
 <%= truck.address %>
 <%= link_to "", edit_truck_path(truck.id), {:class => "glyphicon glyphicon-pencil"} %>
 <%= link_to "", truck, method: :delete, :class => "glyphicon glyphicon-trash", data: { confirm: "Are you sure you want to delete this truck?"} %>

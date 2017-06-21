@@ -1,1 +1,8 @@
 show index here
+<% @locations.each do |location| %>
+<br>
+<%= location.address %>
+<br>
+<%= location.hours %>
+<br>
+<% end %>

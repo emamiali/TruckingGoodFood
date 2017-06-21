@@ -1,1 +1,10 @@
-add new location here 
+add new location here
+<%= form_for [@truck, @location] do |f| %>
+<div>
+  <%= f.text_field :address, placeholder: "Address" %>
+</div>
+<div>
+  <%= f.text_field :hours, placeholder: "Hours" %>
+</div>
+<%= f.submit %>
+<% end %>
