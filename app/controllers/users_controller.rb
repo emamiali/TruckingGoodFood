@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :skip_password_attribute, only: :update
 
   def index
     @users = User.all
@@ -35,17 +36,22 @@ class UsersController < ApplicationController
       flash[:notice] = "Successfully updated profile!!"
       redirect_to user_path(params[:id])
     else
-      flash[:error] = @user.errors.full_message.join(", ")
-      redirect_to edit_users_path
+      flash[:error] = @user.errors
+      redirect_to edit_user_path
       #check this redirect_to
     end
   end
 
-  private #making the params private
+  private
+
+  def skip_password_attribute
+    if params[:password].blank? && params[:password_confirmation].blank?
+      params.except!(:password, :password_confirmation)
+    end
+  end
 
   def user_params
     params.require(:user).permit(:business_name, :email, :password, :logo, :permit_id, :avatar, :password_confirmation)
   end
 
-end #end of class
-# TODO: remove this comment
+end

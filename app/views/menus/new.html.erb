@@ -1,1 +1,12 @@
-<h1>This the form for a new menu</h1>
+<%= form_for [@truck, @menu] do |f| %>
+<div>
+<%= f.text_field :food, placeholder: "Food Name" %>
+</div>
+<div>
+<%= f.text_area :description, placeholder: "Food Description" %>
+</div>
+<div>
+<%= f.text_field :price, placeholder: "Price" %>
+</div>
+<%= f.submit %>
+<% end %>

@@ -10,15 +10,10 @@ class LocationsController < ApplicationController
     @location = @truck.locations.new
   end
 
-def method
-  #code
-end
-
   def create
     @truck = Truck.find_by_id(params[:truck_id])
     @location = @truck.locations.create(location_params)
     if current_user == nil
-      explode
       flash[:error] = @location.errors.full_messages.join(", ")
       redirect_to new_user_session_path
       return
@@ -45,7 +40,7 @@ end
 
   def update
     @truck = Truck.find_by_id(params[:truck_id])
-    if @locations = @truck.locations.update(location_params)
+    if @location = @truck.locations.update(location_params)
       flash[:notice] = "Successfully updated location"
       redirect_to truck_location_path
     else

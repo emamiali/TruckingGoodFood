@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  validates :business_name, :permit_id, :password, :password_confirmation, presence: true
+  validates :business_name, :permit_id, presence: true
+  validates :password, :password_confirmation, presence: true, :on => :create
   validates :permit_id, :email, uniqueness: true
   validates :password, confirmation: true
 

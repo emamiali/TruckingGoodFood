@@ -1,1 +1,13 @@
-<h1>This is the show of one menu html</h1>
+<div>
+  Food: <%= @menu.food %>
+</div>
+<div>
+  Description: <%= @menu.description %>
+</div>
+<div>
+  Price: <%= @menu.price %>
+</div>
+
+<%= link_to "Edit This Food", edit_truck_menu_path %>
+<br>
+<%= button_to "Delete", truck_menu_path, method: :delete, :class => "btn btn-danger", data: { confirm: "Are you sure you want to delete this Food?"} %>
