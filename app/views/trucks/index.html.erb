@@ -1,29 +1,33 @@
-<div class="welcome-top">
-  <h1>Welcome
-  </h1>
-  <h3>Trucking Good Food</h3>
+<div class="welcome_page">
+  <div class="welcome-top">
+    <h1>Welcome</h1>
+    <h3>Trucking Good Food</h3>
 
-  <p>
-    This website helps you find food trucks near you. Please download our iOS app to use on an iphone. If you are a food truck owner and wish to add your truck please create an account and add your truck to the our website.
-  </p>
-  <p>
-    Below is a list of all out food trucks
-  </p>
+    <p>
+      This website helps you find food trucks near you. Please download our iOS app to use on an iphone. If you are a food truck owner and wish to add your truck please create an account and add your truck to the our website.
+    </p>
+    <p>
+      Below is a list of all out food trucks
+    </p>
 
-</div>
+  </div>
 
-<div class='container'>
-  <div class='row'>
-    <% @trucks.each do |truck| %>
-    <div class='col-sm-3'>
-      <%= truck.truck_name %>
-    </div>
-    <div class='col-sm-6'>
-      <%= truck.address %>
-    </div>
-    <div class='col-sm-3'>
-      <%= link_to 'More Info', truck_path(truck.id)%>
-    </div>
+  <div class='container index_truck_container'>
+    <div class='row index_truck_list'>
+
+      <% @trucks.each do |truck| %>
+      <div class='index_truck_card col-sm-4'>
+        <div class="index_truck_picture">
+          <%= image_tag truck.picture unless truck.picture.blank? %>
+        </div>
+        <strong id="index_truck_name"><%= truck.truck_name %></strong>
+        <br>
+        <span id="index_truck_address"><%= truck.address %></span>
+        <br>
+        <%= link_to 'More Info', truck_path(truck.id), class: "index_truck_more"%>
+        <br>
+      </div>
       <% end %>
+    </div>
   </div>
 </div>
