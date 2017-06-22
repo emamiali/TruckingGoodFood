@@ -35,6 +35,23 @@ end
 
   def show
     @truck = Truck.find_by_id(params[:truck_id])
+    @locations = @truck.locations.find_by_id(params[:id])
+  end
+
+  def edit
+    @truck = Truck.find_by_id(params[:truck_id])
+    @location = @truck.locations.find_by_id(params[:id])
+  end
+
+  def update
+    @truck = Truck.find_by_id(params[:truck_id])
+    if @locations = @truck.locations.update(location_params)
+      flash[:notice] = "Successfully updated location"
+      redirect_to truck_location_path
+    else
+      flash[:error] = @location.errors.full_messages.join(", ")
+      redirect_to edit_truck_location_path
+    end
   end
 
   private
