@@ -54,6 +54,14 @@ end
     end
   end
 
+  def destroy
+    @truck = Truck.find_by_id(params[:truck_id])
+    @location = @truck.locations.destroy
+    flash[:notice] = "Successfully
+    Deleted Location"
+    redirect_to truck_path(params[:truck_id])
+  end
+
   private
 
   def location_params
