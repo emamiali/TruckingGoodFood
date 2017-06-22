@@ -1,48 +1,61 @@
 class MenusController < ApplicationController
 
     def index
-      @menus = Menu.all
+      @truck = Truck.find_by_id(params[:truck_id])
+      @menus = @truck.menus
     end
 
     def new
-      @menu = Menu.new
+      @truck = Truck.find_by_id(params[:truck_id])
+      @menu = @truck.menus.new
     end
 
     def create
-      @menu = Menu.create(menu_params)
-      redirect_to menus_path
+      @truck = Truck.find_by_id(params[:truck_id])
+      @menu = @truck.menus.create(menu_params)
+      if current_user == nil
+        flash[:error] = @menu.errors.full_messages.join(", ")
+        redirect_to new_user_session_path
+        return
+      else @menu.user_id = current_user.id
+      end
+      if @menu.save
+        flash[:notice] = "Successfully Added a new menu"
+        redirect_to truck_menus_path(@truck.id)
+      else
+        flash[:error] = @menu.errors.full_messages.join(", ")
+        redirect_to new_truck_menu_path
+      end
     end
 
     def show
-      @menu = Menu.find_by_id(params[:id])
-    end
-
-    def create
-      Menu.create(menu_params)
-      redirect_to menus_path
+      @truck = Truck.find_by_id(params[:truck_id])
+      @menu = @truck.menus.find_by_id(params[:id])
     end
 
     def edit
-      @menu = Menu.find_by_id(params[:id])
+      @truck = Truck.find_by_id(params[:truck_id])
+      @menu = @truck.menus.find_by_id(params[:id])
     end
 
     def update
-    @menu = Menu.find(params[:id])
-      if @menu.update(menus_params)
-        flash[:notice] = "Successfully updated menu."
-        redirect_to menus_path
+      @truck = Truck.find_by_id(params[:truck_id])
+      if @menu = @truck.menus.update(menu_params)
+        flash[:notice] = "Successfully updated menu"
+        redirect_to truck_menu_path
       else
         flash[:error] = @menu.errors.full_messages.join(", ")
-        redirect_to edit_menus_path
+        redirect_to edit_truck_menu_path
       end
     end
 
     def destroy
-      @menu = Menu.find(params[:id])
-      @menu.destroy
-      flash[:notice] = "Successfully deleted recipe."
-      redirect_to menus_path
-  end
+      @truck = Truck.find_by_id(params[:truck_id])
+      @menu = @truck.menus.destroy
+      flash[:notice] = "Successfully
+      Deleted Menu"
+      redirect_to truck_path(params[:truck_id])
+    end
 
     private
 

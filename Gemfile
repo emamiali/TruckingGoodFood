@@ -34,8 +34,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'bootstrap-generators', '~> 3.3.4'
-
-gem 'bootstrap-sass'
+gem 'geocoder'
+gem "paperclip"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

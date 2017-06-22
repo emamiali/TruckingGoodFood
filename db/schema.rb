@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530184022) do
+ActiveRecord::Schema.define(version: 20170622064529) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "address"
+    t.string   "hours"
+    t.float    "latitude"
+    t.float    "longitutde"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "truck_id"
+    t.integer  "user_id"
+    t.index ["truck_id"], name: "index_locations_on_truck_id", using: :btree
+    t.index ["user_id"], name: "index_locations_on_user_id", using: :btree
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string   "food"
@@ -23,15 +36,15 @@ ActiveRecord::Schema.define(version: 20170530184022) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "truck_id"
+    t.integer  "user_id"
     t.index ["truck_id"], name: "index_menus_on_truck_id", using: :btree
+    t.index ["user_id"], name: "index_menus_on_user_id", using: :btree
   end
 
   create_table "trucks", force: :cascade do |t|
     t.string   "truck_name"
     t.string   "phone_number"
     t.string   "address"
-    t.float    "long"
-    t.float    "lat"
     t.boolean  "is_cash_only"
     t.string   "picture"
     t.string   "info"
@@ -40,6 +53,8 @@ ActiveRecord::Schema.define(version: 20170530184022) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["user_id"], name: "index_trucks_on_user_id", using: :btree
   end
 
@@ -47,10 +62,19 @@ ActiveRecord::Schema.define(version: 20170530184022) do
     t.string   "email"
     t.string   "business_name"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "logo"
+    t.string   "permit_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
+  add_foreign_key "locations", "trucks"
+  add_foreign_key "locations", "users"
   add_foreign_key "menus", "trucks"
+  add_foreign_key "menus", "users"
   add_foreign_key "trucks", "users"
 end

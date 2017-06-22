@@ -3,36 +3,44 @@ class TrucksController < ApplicationController
   before_action :find_user
 
   def index
-    @trucks = @user.trucks
+    @trucks = Truck.all
   end
 
   def new
-    @truck = @user.trucks.new
+    @truck = Truck.new
   end
 
   def create
     @truck = Truck.create(truck_params)
-    redirect_to trucks_path
+    if current_user == nil
+      flash[:error] = @truck.errors.full_messages.join(", ")
+      redirect_to new_user_session_path
+      return
+    else @truck.user_id = current_user.id
+    end
+    if @truck.save
+      flash[:notice] = "Successfully created truck"
+      redirect_to user_path(@truck.user_id)
+    else
+      flash[:error] = @truck.errors.full_messages.join(", ")
+      redirect_to new_truck_path
+    end
   end
 
   def show
     @truck = Truck.find_by_id(params[:id])
   end
 
-  def create
-    Truck.create(truck_params)
-    redirect_to trucks_path
-  end
 
   def edit
     @truck = Truck.find_by_id(params[:id])
   end
 
   def update
-  @truck = Truck.find(params[:id])
+    @truck = Truck.find(params[:id])
     if @truck.update(truck_params)
       flash[:notice] = "Successfully updated truck."
-      redirect_to trucks_path
+      redirect_to user_path(@truck.user_id)
     else
       flash[:error] = @truck.errors.full_messages.join(", ")
       redirect_to edit_trucks_path
@@ -42,9 +50,9 @@ class TrucksController < ApplicationController
   def destroy
     @truck = Truck.find(params[:id])
     @truck.destroy
-    flash[:notice] = "Successfully deleted recipe."
-    redirect_to trucks_path
-end
+    flash[:notice] = "Successfully deleted truck."
+    redirect_to user_path(@truck.user_id)
+  end
 
   private
 

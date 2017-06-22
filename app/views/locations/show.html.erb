@@ -1,0 +1,8 @@
+Address: <%= @locations.address %>
+<br>
+Hours: <%= @locations.hours %>
+<br>
+<%= link_to "Edit", edit_truck_location_path %>
+
+
+<%= button_to "Delete", truck_location_path, method: :delete, :class => "btn btn-danger", data: { confirm: "Are you sure you want to delete this location?"} %>
