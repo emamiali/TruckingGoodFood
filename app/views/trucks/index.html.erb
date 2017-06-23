@@ -16,9 +16,14 @@
     <div class='row index_truck_list'>
 
       <% @trucks.each do |truck| %>
-      <div class='index_truck_card col-sm-4'>
-        <div class="index_truck_picture">
+      <div class='index_truck_card col-xs-4'>
+        <div class="test">
+          <div class="row">
+          <div class="col-xs-4"></div>
+        <div class="index_truck_picture col-xs-4">
           <%= image_tag truck.picture unless truck.picture.blank? %>
+        </div>
+        <div class="col-xs-4"></div>
         </div>
         <strong id="index_truck_name"><%= truck.truck_name %></strong>
         <br>
@@ -26,6 +31,7 @@
         <br>
         <%= link_to 'More Info', truck_path(truck.id), class: "index_truck_more"%>
         <br>
+        </div>
       </div>
       <% end %>
     </div>
