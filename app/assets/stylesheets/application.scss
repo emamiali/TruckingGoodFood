@@ -4,6 +4,7 @@
 html, body, ul, ol {
   margin: 0;
   padding: 0;
+  font-family: work-sans;
 }
 
 .truck_info {
@@ -19,6 +20,7 @@ html, body, ul, ol {
 
 .welcome-top{
   text-align: center;
+  font-family: athiti;
 }
 
 .welcome_page{
@@ -36,7 +38,7 @@ html, body, ul, ol {
 .index_truck_card{
   background-color: rgb(252, 200, 131);
   border: 1px solid orange;
-  height: 200px;
+  height: fit-content;
   width: 33%;
   margin-bottom: 10px;
 }
