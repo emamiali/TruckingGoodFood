@@ -1,4 +1,4 @@
-<%= form_for @truck  do |f| %>
+<%= form_for @truck, html: { multipart: true}  do |f| %>
   <div>
     <%= f.text_field :truck_name, placeholder: "Truck Name" %>
   </div>
@@ -13,6 +13,15 @@
   </div>
   <div>
     <%= f.text_field :category, placeholder: "category" %>
+  </div>
+  <div>
+    <p>
+      You may post a link or upload a truck picture
+    </p>
+    <%= f.text_field :picture, placeholder: "Truck Picture" %>
+  </div>
+  <div>
+    <%= f.file_field :truck_image %>
   </div>
   <%= f.submit %>
 <% end %>
