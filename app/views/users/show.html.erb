@@ -1,26 +1,28 @@
-<div>
+<div class="col-xs-6 user_show">
   <%= image_tag @user.logo unless @user.logo.blank? %>
   <%= image_tag @user.avatar.url(:medium) %>
   <br>
-  Welcome <%= @user.business_name %>
+  Welcome:
+  <strong><%= @user.business_name %></strong>
   <br>
-  Email: <%= @user.email %>
+  Email:
+  <%= @user.email %>
   <br>
-  Permit ID: <%= @user.permit_id %>
+  Permit ID:
+  <%= @user.permit_id %>
   <br>
   <br>
   <%= link_to "Edit Your Profile", edit_user_path(@user) %>
   <br>
   <br>
 </div>
-<%= link_to 'Add a new Truck', new_truck_path %>
-<% @trucks.each do |truck| %>
-<div>
+<div class="col-xs-6 user_truck">
 
-<%= link_to truck.truck_name, truck_path(truck.id) %>
-<%= truck.address %>
-<%= link_to "", edit_truck_path(truck.id), {:class => "glyphicon glyphicon-pencil"} %>
-<%= link_to "", truck, method: :delete, :class => "glyphicon glyphicon-trash", data: { confirm: "Are you sure you want to delete this truck?"} %>
-<br>
+  <% @trucks.each do |truck| %>
+  <%= link_to truck.truck_name, truck_path(truck.id) %>
+  <%= link_to "", edit_truck_path(truck.id), {:class => "glyphicon glyphicon-pencil"} %>
+  <%= link_to "", truck, method: :delete, :class => "glyphicon glyphicon-trash", data: { confirm: "Are you sure you want to delete this truck?"} %>
+  <br>
+  <% end %>
+  <%= link_to 'Add a new Truck', new_truck_path %>
 </div>
-<% end %>
