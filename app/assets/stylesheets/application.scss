@@ -60,11 +60,12 @@ body{
   font-family: athiti;
 }
 
-.truck_info {
+#truck_info {
   border: 1px solid rgb(0, 0, 0);
   padding: 5px;
   margin: 10px 0;
   text-align: center;
+  font-family: athiti;
 }
 
 .user_truck_card {
@@ -85,4 +86,32 @@ body{
   width: 70%;
   height: 70%;
   margin: 10px;
+}
+
+.one_truck_container {
+  font-family: athiti;
+}
+
+.truck_show_info {
+  width: fit-content;
+  height: fit-content;
+}
+
+
+.truck_show_image {
+  width: 100%;
+  height: 70%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.truck_show_location {
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+.edit_location_btn {
+  font-size: 12px;
+  padding: 4px;
+  margin: 0;
 }

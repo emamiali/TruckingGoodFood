@@ -1,27 +1,43 @@
 <div class="one_truck_container container">
    <div class="row">
 
-  <div class="col-sm-3">
-    <%= image_tag @truck.picture unless @truck.picture.blank? %>
-    <br>
-    <div class="truck_info">
+  <div class="col-xs-6 truck_show_info">
+    <div id="truck_info">
+      <%= image_tag @truck.truck_image.url(:medium) %>
+      <br>
       Name:
       <%= @truck.truck_name %>
       <br>
       Phone Number:
       <%= @truck.phone_number %>
       <br>
-      Info:
+      Description:
       <%= @truck.info %>
       <br>
       Category:
       <%= @truck.category %>
+      <br>
+      <%= link_to 'Edit this truck', edit_truck_path(@truck), class: "btn btn-primary" %>
     </div>
+
   </div>
-  <div class="col-sm-9">
-    This will be each truck info
+  <div class="col-xs-6 truck_show_location">
+    <% @locations.each do |location| %>
+    <div>
+      <span><strong>Address: </strong><%= location.address %></span>
+    </div>
+    <div>
+      <span><strong>Hours: </strong><%= location.hours %></span>
+    </div>
+    <div>
+      <%= link_to "Edit location", edit_truck_location_path(@truck.id, location.id), class: "btn btn-primary location_btn" %>
+      <%= link_to "Delete", truck_location_path(@truck.id, location.id), method: :delete, :class => "btn btn-danger", data: { confirm: "Are you sure you want to delete this location?"} %>
+    </div>
+    <br>
+    <% end %>
+    <br>
+    <%= link_to "Add a location for this truck", new_truck_location_path(@truck) %>
   </div>
 </div>
-<%= link_to 'Menu', truck_menu_path(@truck) %>
-<%= link_to 'edit this truck', edit_truck_path(@truck) %>
+<%= link_to 'Menu', truck_menus_path(@truck) %>
 </div>
