@@ -4,13 +4,20 @@
 html, body, ul, ol {
   margin: 0;
   padding: 0;
+  font-family: work-sans;
 }
 
-.truck_info {
-  border: 1px solid rgb(0, 0, 0);
-  padding: 5px;
-  margin: 10px 0;
-  text-align: center;
+.btn{
+  margin: 2px;
+}
+
+img{
+  width: 80px;
+  height: 100px;
+}
+
+body{
+  background-color: rgb(237, 168, 78);
 }
 
 .edit_business_name {
@@ -19,39 +26,92 @@ html, body, ul, ol {
 
 .welcome-top{
   text-align: center;
-}
-
-#index_truck_name{
-  margin: 10px;
-  padding: 10px;
-}
-
-#index_truck_address{
-  margin: 10px;
-  padding: 10px;
+  font-family: athiti;
 }
 
 .welcome_page{
   background-color: rgb(237, 168, 78);
+  text-align: center;
 }
 
 .index_truck_picture{
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.index_truck_more{
+.index_truck_card{
+  background-color: rgb(252, 200, 131);
+  border: 1px solid orange;
+  height: fit-content;
+  width: 33%;
+  margin-bottom: 10px;
+}
+
+.form-control {
+  background-color: rgb(252, 210, 170);
+  margin: 2px;
+  text-align: center;
+}
+
+.user_show {
+  text-align: center;
+  font-family: athiti;
+}
+
+#truck_info {
+  border: 1px solid rgb(0, 0, 0);
+  padding: 5px;
+  margin: 10px 0;
+  text-align: center;
+  font-family: athiti;
+}
+
+.user_truck_card {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+  font-family: athiti;
+}
+
+.user_truck_image {
+  width: 70%;
+  height: 70%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.user_show_avatar {
+  width: 70%;
+  height: 70%;
   margin: 10px;
-  padding: 10px;
 }
 
-img{
-  width: inherit;
-  height: inherit;
-  margin: 10px;
-  padding: 10px;
+.one_truck_container {
+  font-family: athiti;
 }
 
-body{
-  background-color: rgb(237, 168, 78);
+.truck_show_info {
+  width: fit-content;
+  height: fit-content;
+}
+
+
+.truck_show_image {
+  width: 100%;
+  height: 70%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.truck_show_location {
+  border: 1px solid black;
+  margin-top: 10px;
+}
+
+.edit_location_btn {
+  font-size: 12px;
+  padding: 4px;
+  margin: 0;
 }

@@ -8,7 +8,15 @@ class User < ApplicationRecord
   has_many :trucks
   has_many :menus, through: :trucks
   has_many :locations, through: :trucks
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+
+
+  has_attached_file :avatar,
+                    styles: { :large => "600x400>",
+                              :medium => "300x200>",
+                              :small => "100x75>",
+                              :thumb => "60x42>" },
+                    :default_url => "/assets/avatar.png"
+
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
   def self.confirm(params)

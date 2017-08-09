@@ -29,6 +29,7 @@ class TrucksController < ApplicationController
 
   def show
     @truck = Truck.find_by_id(params[:id])
+    @locations = @truck.locations
   end
 
 
@@ -61,6 +62,6 @@ class TrucksController < ApplicationController
   end
 
   def truck_params
-    params.require(:truck).permit(:truck_name, :phone_number, :address, :is_cash_only, :picture, :info, :long, :lat, :category, :general_hours)
+    params.require(:truck).permit(:truck_name, :phone_number, :address, :is_cash_only, :picture, :info, :category, :general_hours)
   end
 end

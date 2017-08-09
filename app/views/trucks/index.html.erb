@@ -4,10 +4,10 @@
     <h3>Trucking Good Food</h3>
 
     <p>
-      This website helps you find food trucks near you. Please download our iOS app to use on an iphone. If you are a food truck owner and wish to add your truck please create an account and add your truck to the our website.
+      This website helps you find food trucks near you. Please <%= link_to "download", "https://appsto.re/us/VYXIjb.i" %> our iOS app to use on an iphone. If you are a food truck owner and wish to add your truck please create an account and add your truck to the our website.
     </p>
     <p>
-      Below is a list of all out food trucks
+      Below is a list of food trucks
     </p>
 
   </div>
@@ -16,16 +16,22 @@
     <div class='row index_truck_list'>
 
       <% @trucks.each do |truck| %>
-      <div class='index_truck_card col-sm-4'>
-        <div class="index_truck_picture">
+      <div class='index_truck_card col-xs-4'>
+        <div class="test">
+          <div class="row">
+          <div class="col-xs-4"></div>
+        <div class="index_truck_picture col-xs-4">
           <%= image_tag truck.picture unless truck.picture.blank? %>
         </div>
-        <strong id="index_truck_name"><%= truck.truck_name %></strong>
+        <div class="col-xs-4"></div>
+        </div>
+        <strong><%= truck.user.business_name%></strong>
         <br>
-        <span id="index_truck_address"><%= truck.address %></span>
+        <strong id="index_truck_name"><%= truck.truck_name %></strong>
         <br>
         <%= link_to 'More Info', truck_path(truck.id), class: "index_truck_more"%>
         <br>
+        </div>
       </div>
       <% end %>
     </div>

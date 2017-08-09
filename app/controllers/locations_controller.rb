@@ -15,13 +15,13 @@ class LocationsController < ApplicationController
     @location = @truck.locations.create(location_params)
     if current_user == nil
       flash[:error] = @location.errors.full_messages.join(", ")
-      redirect_to new_user_session_path
+      redirect_to login_path
       return
     else @location.user_id = current_user.id
     end
     if @location.save
       flash[:notice] = "Successfully Added a new location"
-      redirect_to truck_locations_path(@truck.id)
+      redirect_to truck_path(@truck.id)
     else
       flash[:error] = @location.errors.full_messages.join(", ")
       redirect_to new_truck_location_path
@@ -40,9 +40,9 @@ class LocationsController < ApplicationController
 
   def update
     @truck = Truck.find_by_id(params[:truck_id])
-    if @location = @truck.locations.update(location_params)
-      flash[:notice] = "Successfully updated location"
-      redirect_to truck_location_path
+    if @location = @truck.locations.find_by_id(params[:id]).update(location_params)
+      flash[:notice] =  @location
+      redirect_to truck_path(@truck.id)
     else
       flash[:error] = @location.errors.full_messages.join(", ")
       redirect_to edit_truck_location_path
@@ -51,7 +51,7 @@ class LocationsController < ApplicationController
 
   def destroy
     @truck = Truck.find_by_id(params[:truck_id])
-    @location = @truck.locations.destroy
+    @location = @truck.locations.find_by_id(params[:id]).destroy
     flash[:notice] = "Successfully
     Deleted Location"
     redirect_to truck_path(params[:truck_id])
