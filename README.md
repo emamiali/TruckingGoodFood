@@ -1,24 +1,12 @@
-# README
+# Welcome to Trucking Good Food 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application was built for food truck owners to share their truck's location with their customers. 
+The Web Site is for owners to enter their trucks location and the iOS app is for the customer to find the trucks near them. 
 
-Things you may want to cover:
+![alt text](https://i.imgur.com/4rzRY6I.png "Landing Page")
 
-* Ruby version
+Please visit the live demo on [Heroku](https://peaceful-island-61014.herokuapp.com/)
 
-* System dependencies
+## Built With
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Ruby on Rails
