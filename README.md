@@ -9,4 +9,12 @@ Please visit the live demo on [Heroku](https://peaceful-island-61014.herokuapp.c
 
 ## Built With
 
-Ruby on Rails
+* Ruby on Rails
+* Active Record 
+* PostgreSQL
+* bcrypt(authentication)
+* Bootstrap
+* Geocoder (longitude and latitude of trucks) 
+* paperclip (to upload files from computer)
+
+
